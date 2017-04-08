@@ -43,7 +43,7 @@ gulp.task("spritesmith", () => {
 // 压缩图片（from /src/images to /htdocs/images)
 // 使用了cache，若有问题运行npm run imgcache
 gulp.task("imagemin", () => {
-    gulp.src('./src/images/*.{png,jpg,gif,ico}')
+    gulp.src('./src/images/**/*.{png,jpg,gif,ico}')
         .pipe(gulpCache(imagemin({
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],
