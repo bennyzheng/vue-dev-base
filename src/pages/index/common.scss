@@ -1,0 +1,9 @@
+@import "../../sprites/front";
+
+.icon-edit {
+    @include sprite($edit);
+}
+body {
+    background-color: #eeeeee;
+    font-family: "Heiti SC", "Microsoft YaHei";
+}
