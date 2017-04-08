@@ -7,19 +7,19 @@
 ## 相关技术说明
 
 * **前台涉及技术**
-    
+
     * vue
     * vuex
     * vue-router - 路由功能
     * axios - 取代vue-resource，用于发送ajax请求
     * mockjs - 拦截ajax请求，自造假数据
     * promise.js - 支持ES6的Promise
-    
+
 * **工作流涉及技术**
 
     * vue - 核心功能不解释
     * babel - 支持部份常用的ES6语法
-    * babili-webpack-plugi - 支持将ES6压缩混淆
+    * babili-webpack-plugin - 支持将ES6压缩混淆
     * sass - 支持scss预编译
     * less - 把sass换成less就好了
     * sprite - 雪碧图自动生成
@@ -35,17 +35,17 @@
     * css - 网站样式目录，编译生成
     * images - 网站图片目录，编译生成
     * js - 网站脚本目录，编译生成
-    
+
 * src - 网站源目录
 
-    * conf - 站点配置信息，比如cgi请求地址 
+    * conf - 站点配置信息，比如cgi请求地址
     * images - 未经压缩的图片目录
     * lib - 通用逻辑目录，用于封装一些通用的逻辑性代码
     * pages - 页面入口目录
     * sprites - 雪碧图目录
     * store - 站点通用store
     * ui - 站点通用VUE组件
-    
+
 * gulpfile.js - gulp脚本文件
 * package.json - npm依赖文件
 * postcss.config.js - postcss-loader的配置文件
