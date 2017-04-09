@@ -1,7 +1,7 @@
 {
   "name": "ensite",
   "version": "1.0.0",
-  "description": "fuwu's site",
+  "description": "Vue dev base",
   "scripts": {
     "dev": "gulp imagemin && gulp spritesmith && node --max_old_space_size=2048 ./node_modules/webpack/bin/webpack.js -w --progress --color",
     "build": "gulp cleanimagecache && gulp imagemin && gulp spritesmith && NODE_ENV=production node --max_old_space_size=2048 ./node_modules/webpack/bin/webpack.js --progress --color",
