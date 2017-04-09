@@ -5047,9 +5047,9 @@ var _promise = __webpack_require__(25);
 
 var _promise2 = _interopRequireDefault(_promise);
 
-var _common = __webpack_require__(22);
+var _main = __webpack_require__(22);
 
-var _common2 = _interopRequireDefault(_common);
+var _main2 = _interopRequireDefault(_main);
 
 var _axios = __webpack_require__(3);
 

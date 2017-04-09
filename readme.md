@@ -29,52 +29,71 @@
     * webpack - 处理代码文件监听、打包压缩、HTML自动生成、CSS文件自动抽离
 
 ## 目录结构
+```text
+.
+|____gulpfile.js - gulp脚本文件，包含图片压缩、雪碧图功能
+|____htdocs - 发布根目录，本目录下理论上都是编译生成的
+| |____css - 样式输出目录
+| | |____common.css webpack插件抽离出来的通用样式
+| |____images - 图片输出目录，由gulp对/src/images中的图片压缩输出到此
+| | |____favicon.ico - 最好有个网站icon文件
+| | |____sprites-front.png - gulp雪碧图自动生成，源目录在/src/sprites/front
+| |____index.html - 由/src/pages/index/main.js+template.html生成的页面
+| |____js - 脚本输出目录
+| | |____common.js - 由webpack抽离出来的通用脚本模块
+| | |____index.js - index.html独有的脚本模块
+|____package.json - 依赖模块文件
+|____postcss.config.js - postcss的配置信息，自动为指定版本的浏览器加上样式前缀
+|____readme.md - 说明文件
+|____scss.template.handlebars - 雪碧图的模板文件，如果需要less、css等请自行编写
+|____src - 源目录，本目录不应该被发布
+| |____conf - 网站配置信息，比如请求地址、store的key之类的都可以在这建文件定义
+| | |____cgi.js - 请求地址配置
+| |____images - gulp的imagemin会将此目录下的图片压缩输出到htdocs目录下
+| | |____favicon.ico
+| |____lib - 通用逻辑模块
+| |____pages - 存放页面入口目录
+| | |____index - index.html的页面入口目录
+| | | |____main.scss - index.html的样式 
+| | | |____main.js - 入口脚本文件，一切从这里开始
+| | | |____nav.vue - 导航组件，如果它有子模块也可以用./nav/index.vue来组织，子模块放在./nav中
+| | | |____routes.js - 路由配置信息，若是比较复杂也可以用./routes/index.js然后拆分成多个文件来组织
+| | | |____store - 页面的vuex状态管理配置，这是拆分后的，规模小的话直接用store.js也是ok的
+| | | | |____actions.js
+| | | | |____getters.js
+| | | | |____index.js
+| | | | |____modules.js
+| | | | |____mutations.js
+| | | | |____state.js
+| | | |____template.html - index.html的模板文件
+| | | |____views - index.html是个单页面应用，这里是它的三个页面模块
+| | | | |____home - 对应着/，它若是有子模块可以放在这里边
+| | | | | |____index.vue
+| | | | |____post - 对应着/post
+| | | | | |____index.vue
+| | | | |____user - 对应着/user
+| | | | | |____index.vue
+| |____sprites - 雪碧图目录，一个子目录就是一个雪碧图
+| | |_____front.scss - 由front目录里的png文件生成的scss文件，使用时导入本文件
+| | |____front - 名为front的雪碧图目录，输出了./_front.scss以及/htdocs/images/sprites-front.png
+| | | |____edit-hover.png - 可以使用 @include sprite($edit-hover)引用
+| | | |____edit.png - 可以使用 @include sprite($edit)引用
+| |____store - 站点全局vuex状态配置
+| | |____actions.js
+| | |____getters.js
+| | |____index.js
+| | |____modules.js
+| | |____mutations.js
+| | |____state.js
+| |____ui - 站点全局通用组件目录，可以用xxx.vue也可以建立./xxx/index.vue，看规模而定，不要有强迫症
+|____webpack.config.js - webpack脚本
+```
+### 关于单页面应用
 
-* htdocs - 网站根目录，编译输出目录
+一个站点未必一定要是一个单页面，若是站点较大，明显需要使用多个单页面应用来实现，以免过于臃肿，比如可以有：
 
-    * css - 网站样式目录，编译生成
-    * images - 网站图片目录，编译生成
-    * js - 网站脚本目录，编译生成
-
-* src - 网站源目录
-
-    * conf - 站点配置信息，比如cgi请求地址
-    * images - 未经压缩的图片目录
-    * lib - 通用逻辑目录，用于封装一些通用的逻辑性代码
-    * pages - 页面入口目录
-    * sprites - 雪碧图目录
-    * store - 站点通用store
-    * ui - 站点通用VUE组件
-
-* gulpfile.js - gulp脚本文件
-* package.json - npm依赖文件
-* postcss.config.js - postcss-loader的配置文件
-* readme.md - 说明文件
-* scss.template.handlebars - 雪碧图模板文件
-* webpack.config.js - webpack脚本
-
-### htdocs
-
-一般来说不应该在这里放置任何东西，该目录的内容应该是编译生成的。
-
-### 页面入口目录
-
-每个页面应该在pages下建立一个独有的目录，比如index目录。页面入口目录必须拥有main.js、template.html，否则它将不会生成对应的html页面。
-
-/pages/index目录将会生成/htdocs/index.html，并加载相应的css、js代码。
-
-页面入口目录下一般来store目录（或store.js）用来放置当前页面的store信息。
-
-若是单页面应用则还会有routes目录（或routes.js）放置路由信息，同时属于该页面的路由需要放到views目录下，同时也建立对应的目录，比如/pages/index/views/home。
-
-/pages/index/views/home目录下除了index.vue作为入口模块之外，其它独属的模块也可以放里边。
-
-一个站点未必一定要是一个单页面，它也可以由多个单页面应用组件，比如可以有：
-
-/src/pages/index
-
-/src/pages/post
-
+* /src/pages/index
+* /src/pages/post
 
 简单来说就是把大的站点划成多个单页面应用，各自管理它们自己的路由。
 
