@@ -54,7 +54,6 @@ const plugins = [
         chunks: chunks, // chunks是需要提取的模块
         minChunks: chunks.length
     })
-
 ];
 
 if (isProduction) {
@@ -68,7 +67,7 @@ if (isProduction) {
             }]
         ]
     }));
-} else {
+} else if (process.env.NODE_ENV == "dev") {
     plugins.push(new webpack.HotModuleReplacementPlugin());
 }
 

@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Vue dev base",
   "scripts": {
-    "dev": "gulp imagemin && gulp spritesmith && node --max_old_space_size=2048 ./node_modules/.bin/webpack-dev-server",
+    "dev": "gulp imagemin && gulp spritesmith &&NODE_ENV=dev node --max_old_space_size=2048 ./node_modules/.bin/webpack-dev-server",
     "build": "gulp cleanimagecache && gulp imagemin && gulp spritesmith && NODE_ENV=production node --max_old_space_size=2048 ./node_modules/.bin/webpack --progress --color",
-    "watch": "gulp imagemin && gulp spritesmith && node --max_old_space_size=2048 ./node_modules/.bin/webpack -w",
+    "watch": "gulp imagemin && gulp spritesmith && NODE_ENV=watch node --max_old_space_size=2048 ./node_modules/.bin/webpack -w",
     "sprites": "gulp spritesmith",
     "imagemin": "gulp imagemin",
     "imagecache": "gulp cleanimagecache"
