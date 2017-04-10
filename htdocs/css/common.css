@@ -1,0 +1,11 @@
+.icon-edit {
+  display: inline-block;
+  background-image: url(/images/sprites-common.png);
+  background-position: 0px -37px;
+  width: 16px;
+  height: 17px;
+  background-size: 16px 54px; }
+
+body {
+  background-color: #eeeeee;
+  font-family: "Heiti SC", "Microsoft YaHei"; }
