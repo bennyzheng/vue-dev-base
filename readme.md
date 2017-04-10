@@ -104,7 +104,8 @@
 
 * 将/src/images中的图片压缩输出到/htdocs/images
 * 构建雪碧图
-* 启动webpack针对/src/pages的各入口文件做打包工作并监听变化。
+* 启动webpack-dev-server针对/src/pages的各入口文件做打包工作并监听变化。
+* 自动打开浏览器
 
 开发模式不做代码压缩，也不清空缓存。
 
