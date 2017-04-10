@@ -194,7 +194,6 @@ test
 * /src/store/front
 * /src/store/manager
 
-
 ### 通用组件目录
 
 /src/comp目录作为通用组件目录存放。
@@ -204,8 +203,6 @@ test
 同样使用import mod from "./mod"的方式导入模块，可以使用./mod.js或者./mod/index.js，具体选择哪种根据该模块的规模。
 
 若是模块较小型，只需要一个文件即可则直接使用mod.js，若是它本身还有其它资源，则可以使用目录的形式。
-
-`
 
 ### 为什么同时使用gulp/webpack
 
