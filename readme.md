@@ -31,6 +31,7 @@
     * webpack - 处理代码文件监听、打包压缩、HTML自动生成、CSS文件自动抽离
 
 ## 目录结构
+
 ```text
 .
 |____gulpfile.js - gulp脚本文件，包含图片压缩、雪碧图功能
@@ -95,44 +96,6 @@
 
 ```
 
-
-
-### 关于单页面应用
-
-一个站点未必一定要是一个单页面，若是站点较大，明显需要使用多个单页面应用来实现，以免过于臃肿，比如可以有：
-
-* /src/pages/index
-* /src/pages/post
-
-简单来说就是把大的站点划成多个单页面应用，各自管理它们自己的路由。
-
-或者。。干脆就不用vue-router，没人逼你。
-
-### 雪碧图目录
-
-由于考虑到一个站点可能会有多个雪碧图，因此每个雪碧图在/src/sprites下建立一个目录，比如前台展示页面的雪碧图放在/src/sprites/front，执行npm run sprites时会生成以下两个文件：
-
-* /htdocs/images/sprites-front.png
-* /src/sprites/_front.scss
-
-若是应用其它技术，比如less或者直接生成css，则需要修改一下gulpfile.js。
-
-### vuex状态目录
-
-vuex状态文件应该放置在/src/store中，名字默认为index.js。由于本demo有前台、后台两个互相独立的页面状态需要管理，因此在/src/store下建立了两个目录分开存放 。
-
-store可以根据规模决定是否直接使用一个文件(比如/src/store/index.js)或是像本demo一般拆开多个文件于index.js中导入。
-
-### 通用组件目录
-
-/src/ui目录作为通用组件目录存放，比如站点通用的header、footer之类的。
-
-### 组件存放方式
-
-同样使用import mod from "./mod"的方式导入模块，可以使用./mod.js或者./mod/index.js，具体选择哪种根据该模块的规模。
-
-若是模块较小型，只需要一个文件即可则直接使用mod.js，若是它本身还有其它资源，则可以使用目录的形式。
-
 ## 命令说明
 
 ### 启动开发模式
@@ -176,12 +139,12 @@ store可以根据规模决定是否直接使用一个文件(比如/src/store/ind
 
 源目录: /src/sprites
 
-支持生成多个雪碧图，每个雪碧图需要在/src/sprites中建立一个子目录，比如front。
+支持生成多个雪碧图，每个雪碧图需要在/src/sprites中建立一个子目录，比如common。
 
-每个目录都会生成一个对应名字的scss文件，比如/src/sprites/_front.scss，引入该文件即可使用雪碧图。
+每个目录都会生成一个对应名字的scss文件，比如/src/sprites/_common.scss，引入该文件即可使用雪碧图。
 
 ```scss
-@import "../../sprites/front";
+@import "../../sprites/common";
 
 test
 .icon-edit {
@@ -189,5 +152,59 @@ test
 }
 
 ```
+
+命令会自动生成/htdocs/images/sprites-common.png。
+
+## 开发的那些事儿
+
+### 关于页面
+
+每个页面需要在/src/pages中建立一个目录，比如/index.html则是建立/src/pages/index。
+
+打包脚本会寻找/src/pages/index中的main.js作为入口文件，并以/src/pages/index/template.html为模板在/htdocs下生成一个index.html。
+
+生成的html页面不限于非得/src/pages下，也可以建立一个子目录来归类，比如/src/pages/xxx/mypage，那么将会生成/htdocs/xxx/mypage.html。
+
+若是项目应用了vue-router实现单页面应用，建议所有html文件皆放到htdocs，不要出现有/src/pages/index又有/src/pages/index/mypage的情况，既然都实现单页面了，那么乖乖用路由实现吧。
+
+需要注意，单页面应用未必是整个站点做成一个单页面应用，若是站点规模稍大明显需要使用多个单页面应用来实现，以免代码过于臃肿，比如可以有：
+
+* /src/pages/index
+* /src/pages/post
+
+简单来说就是把大的站点划成多个单页面应用，各自管理它们自己的路由。
+
+或者。。干脆就不用vue-router，没人逼你。
+
+### 雪碧图目录
+
+由于考虑到一个站点可能会有多个雪碧图，因此每个雪碧图在/src/sprites下建立一个目录，比如站点通用的雪碧图放在/src/sprites/common，执行npm run sprites时会生成以下两个文件：
+
+* /htdocs/images/sprites-common.png
+* /src/sprites/_common.scss
+
+若是应用其它技术，比如less或者直接生成css，则需要修改一下gulpfile.js。
+
+### vuex状态目录
+
+站点通用的状态数据应该放到/src/store中，名字默认为index.js。根据store的规模，可以考虑拆分成多个文件。
+
+若是有不同的状态需求，比如有前台页面以及后台管理系统之分，也可以在里边继续建立子目录，比如：
+
+* /src/store/front
+* /src/store/manager
+
+
+### 通用组件目录
+
+/src/comp目录作为通用组件目录存放。
+
+### 组件存放方式
+
+同样使用import mod from "./mod"的方式导入模块，可以使用./mod.js或者./mod/index.js，具体选择哪种根据该模块的规模。
+
+若是模块较小型，只需要一个文件即可则直接使用mod.js，若是它本身还有其它资源，则可以使用目录的形式。
+
+`
 
 

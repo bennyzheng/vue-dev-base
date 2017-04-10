@@ -16,7 +16,6 @@ const htmlWebpackPlugins = [];
 const chunks = [];
 const isProduction = process.env.NODE_ENV == "production"; // 是开发环境还是生产环境(请看package.json的script）
 
-// 本来是支持/src/pages/**/main.js，考虑来考虑去，觉得没必要，html页面直接放根目录，里边做router好了
 glob.sync(`${root}/src/pages/**/main.js`).forEach(file => {
     const array = file.split("/");
     const index = array.slice(path.dirname(`${root}/src/pages`).split("/").length + 1, array.length - 1).join("/");
