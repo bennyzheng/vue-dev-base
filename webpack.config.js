@@ -47,13 +47,14 @@ const plugins = [
         __DEBUG__: !isProduction
     }),
     new ExtractTextPlugin({ // 抽离出css
-        filename: "css/[name].css?v=[contenthash]"
+        filename: `css/[name].css${isProduction ? '?v=[contenthash]' : ''}`
     }),
     new webpack.optimize.CommonsChunkPlugin({ // 将通用css抽出来
         name: "common", // 公共模块的名称
         chunks: chunks, // chunks是需要提取的模块
         minChunks: chunks.length
     })
+
 ];
 
 if (isProduction) {
@@ -65,6 +66,8 @@ if (isProduction) {
             "removeDebugger": true
         }]]
     }));
+} else {
+    plugins.push(new webpack.HotModuleReplacementPlugin());
 }
 
 module.exports = {
@@ -72,8 +75,15 @@ module.exports = {
     "output": {
         "path": `${root}/htdocs`,
         "publicPath": "/",
-        "filename": "js/[name].js?v=[chunkhash]",
-        "chunkFilename": "js/[id].js?v=[chunkhash]"
+        "filename": `js/[name].js${isProduction ? '?v=[chunkhash]' : ''}`,
+        "chunkFilename": `js/[id].js${isProduction ? '?v=[chunkhash]' : ''}`
+    },
+    "devServer": {
+        contentBase: __dirname + "/htdocs/",
+        inline: true,
+        host: 'vuelab.dev.com',
+        port: 8080,
+        hot: true
     },
     "resolve": {
         "extensions": [".js", ".vue"],
