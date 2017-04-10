@@ -7,7 +7,7 @@ import axios from "axios";
 import store from "./store";
 import routes from "./routes";
 import AppNav from "./nav.vue";
-import interceptors from "lib/interceptors";
+import interceptors from "utils/interceptors";
 
 Vue.use(VueRouter);
 Vue.use(Vuex);

@@ -82,11 +82,11 @@ module.exports = {
             "vue$": "vue/dist/vue.min.js",
             "mockjs$": "mockjs/dist/mock-min.js",
             "axios$": "axios/dist/axios.min.js",
+            "comp": `${root}/src/comp`,
             "conf": `${root}/src/conf`,
-            "lib": `${root}/src/lib`,
             "sprites": `${root}/src/sprites`,
             "store": `${root}/src/store`,
-            "ui": `${root}/src/ui`
+            "utils": `${root}/src/utils`
         }
     },
     "module": {

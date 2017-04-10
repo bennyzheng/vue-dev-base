@@ -39,7 +39,7 @@
 | | |____common.css webpack插件抽离出来的通用样式
 | |____images - 图片输出目录，由gulp对/src/images中的图片压缩输出到此
 | | |____favicon.ico - 最好有个网站icon文件
-| | |____sprites-front.png - gulp雪碧图自动生成，源目录在/src/sprites/front
+| | |____sprites-common.png - gulp雪碧图自动生成，源目录在/src/sprites/common
 | |____index.html - 由/src/pages/index/main.js+template.html生成的页面
 | |____js - 脚本输出目录
 | | |____common.js - 由webpack抽离出来的通用脚本模块
@@ -49,12 +49,13 @@
 |____readme.md - 说明文件
 |____scss.template.handlebars - 雪碧图的模板文件，如果需要less、css等请自行编写
 |____src - 源目录，本目录不应该被发布
+| |____comp - 通用vue组件目录，比如弹层什么的，它们可能还能够被用到别的站点
 | |____conf - 网站配置信息，比如请求地址、store的key之类的都可以在这建文件定义
 | | |____cgi.js - 请求地址配置
 | |____images - gulp的imagemin会将此目录下的图片压缩输出到htdocs目录下
-| | |____favicon.ico
-| |____lib - 通用逻辑模块
+| | |____favicon.ico - 网站浏览器图标
 | |____pages - 存放页面入口目录
+| | |_____layout - 站点通用布局vue组件
 | | |____index - index.html的页面入口目录
 | | | |____main.scss - index.html的样式 
 | | | |____main.js - 入口脚本文件，一切从这里开始
@@ -76,8 +77,8 @@
 | | | | |____user - 对应着/user
 | | | | | |____index.vue
 | |____sprites - 雪碧图目录，一个子目录就是一个雪碧图
-| | |_____front.scss - 由front目录里的png文件生成的scss文件，使用时导入本文件
-| | |____front - 名为front的雪碧图目录，输出了./_front.scss以及/htdocs/images/sprites-front.png
+| | |_____common.scss - 由common目录里的png文件生成的scss文件，使用时导入本文件
+| | |____common - 名为common的雪碧图目录，输出了./_common.scss以及/htdocs/images/sprites-common.png
 | | | |____edit-hover.png - 可以使用 @include sprite($edit-hover)引用
 | | | |____edit.png - 可以使用 @include sprite($edit)引用
 | |____store - 站点全局vuex状态配置
@@ -87,8 +88,11 @@
 | | |____modules.js
 | | |____mutations.js
 | | |____state.js
-| |____ui - 站点全局通用组件目录，可以用xxx.vue也可以建立./xxx/index.vue，看规模而定，不要有强迫症
+| |____utils - 功能性代码库
+| | |____interceptors.js - axios请求过滤器
 |____webpack.config.js - webpack脚本
+|____yarn.lock - yarn的锁定文件
+
 ```
 ### 关于单页面应用
 

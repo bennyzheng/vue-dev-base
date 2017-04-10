@@ -37,7 +37,5 @@ axios.interceptors.response.use((response) => {
     });
 });
 
-console.log("here");
-
 export default {}
 

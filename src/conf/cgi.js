@@ -1,3 +1,3 @@
 export default {
-    navList: "/cgi/nav_list"
+    "navList": "/get_nav_list.php"
 }
