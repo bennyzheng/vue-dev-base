@@ -207,4 +207,7 @@ test
 
 `
 
+### 为什么同时使用gulp/webpack
+
+你总不希望webpack -w到一半，正爽着，因为想更新一下图片或者雪碧图不得不按ctrl+c重新来一下吧。。还是另开控制台运行一下npm run imagemin爽啊!
 
