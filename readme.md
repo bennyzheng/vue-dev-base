@@ -111,6 +111,14 @@
 
 若是开发过程中图片、雪碧图有变动，请自行运行npm run imagemin或npm run sprites更新。
 
+### 启动watch开发模式
+
+命令：num run watch
+
+与npm run dev类似，只是不启用webpack-dev-server，也不自动打开浏览器了。
+
+这个命令主要是为了像我这边有时候还需要跑在php环境上的。
+
 ### 启动发布
 
 命令：npm run build

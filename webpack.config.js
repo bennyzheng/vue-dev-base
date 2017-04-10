@@ -61,10 +61,12 @@ if (isProduction) {
     console.log("-----------------正在使用生产模式构建工程------------------");
 
     plugins.push(new BabiliWebpackPlugin({ // 压缩
-        "presets": [["babili", {
-            "removeConsole": true,
-            "removeDebugger": true
-        }]]
+        "presets": [
+            ["babili", {
+                "removeConsole": true,
+                "removeDebugger": true
+            }]
+        ]
     }));
 } else {
     plugins.push(new webpack.HotModuleReplacementPlugin());
@@ -100,8 +102,7 @@ module.exports = {
         }
     },
     "module": {
-        "loaders": [
-            {
+        "loaders": [{
                 "test": /\.js$/,
                 "loader": "babel-loader?presets[]=babel-preset-es2015",
                 "include": root,
@@ -136,5 +137,6 @@ module.exports = {
         // 不对某些文件解析依赖
         "noParse": [/vue\.min\.js$/, /mockjs\/dist\/mock-min\.js$/, /axios\.min\.js$/]
     },
+    "devtool": "cheap-module-source-map",
     "plugins": plugins
 }
