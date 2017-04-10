@@ -81,9 +81,10 @@ module.exports = {
     "devServer": {
         contentBase: __dirname + "/htdocs/",
         inline: true,
-        host: 'vuelab.dev.com',
+        host: 'localhost',
         port: 8080,
-        hot: true
+        hot: true,
+        open: true
     },
     "resolve": {
         "extensions": [".js", ".vue"],
