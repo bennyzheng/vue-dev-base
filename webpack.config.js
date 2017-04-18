@@ -15,6 +15,7 @@ const entries = {};
 const htmlWebpackPlugins = [];
 const chunks = [];
 const isProduction = process.env.NODE_ENV == "production"; // 是开发环境还是生产环境(请看package.json的script）
+const Promise = require("promise");
 
 glob.sync(`${root}/src/pages/**/main.js`).forEach(file => {
     const array = file.split("/");
@@ -44,7 +45,8 @@ const plugins = [
     ...htmlWebpackPlugins,
     new webpack.optimize.OccurrenceOrderPlugin(), // 根据模板使用次数而配给更短的id
     new webpack.DefinePlugin({ // 定义js里可以使用的环境变量
-        __DEBUG__: !isProduction
+        __DEBUG__: !isProduction,
+        Promise: Promise
     }),
     new ExtractTextPlugin({ // 抽离出css
         filename: `css/[name].css${isProduction ? '?v=[contenthash]' : ''}`

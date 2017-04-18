@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Vue dev base",
   "scripts": {
-    "dev": "gulp imagemin && gulp spritesmith &&NODE_ENV=dev node --max_old_space_size=2048 ./node_modules/.bin/webpack-dev-server",
-    "build": "gulp cleanimagecache && gulp imagemin && gulp spritesmith && NODE_ENV=production node --max_old_space_size=2048 ./node_modules/.bin/webpack --progress --color",
-    "watch": "gulp imagemin && gulp spritesmith && NODE_ENV=watch node --max_old_space_size=2048 ./node_modules/.bin/webpack -w",
+    "dev": "node ./build/dev.js",
+    "build": "node ./build/build.js",
+    "watch": "node ./build/watch.js",
     "sprites": "gulp spritesmith",
     "imagemin": "gulp imagemin",
     "imagecache": "gulp cleanimagecache"
@@ -15,12 +15,10 @@
   "dependencies": {
     "axios": "^0.16.0",
     "mockjs": "^1.0.1-beta3",
-    "node-sass": "^4.5.2",
     "promise": "^7.1.1",
     "vue": "^2.2.6",
     "vue-router": "^2.3.1",
-    "vuex": "^2.2.1",
-    "webpack-dev-server": "^2.4.2"
+    "vuex": "^2.2.1"
   },
   "devDependencies": {
     "babel-core": "^6.24.0",
@@ -39,10 +37,12 @@
     "json-loader": "^0.5.4",
     "postcss-loader": "^1.3.3",
     "sass-loader": "^6.0.3",
+    "node-sass": "^4.5.2",
     "style-loader": "^0.16.1",
     "vinyl-buffer": "^1.0.0",
     "vue-loader": "^11.3.4",
     "vue-template-compiler": "^2.2.6",
-    "webpack": "^2.3.2"
+    "webpack": "^2.3.2",
+    "webpack-dev-server": "^2.4.2"
   }
 }
