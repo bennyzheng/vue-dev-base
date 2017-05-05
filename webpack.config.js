@@ -102,6 +102,7 @@ module.exports = {
             "vue$": "vue/dist/vue.min.js",
             "mockjs$": "mockjs/dist/mock-min.js",
             "axios$": "axios/dist/axios.min.js",
+            "babel-polyfill$": "babel-polyfill/dist/polyfill.min.js",
             "comp": `${root}/src/comp`,
             "conf": `${root}/src/conf`,
             "sprites": `${root}/src/sprites`,

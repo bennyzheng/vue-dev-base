@@ -1,7 +1,7 @@
+import "babel-polyfill";
 import Vue from "vue";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
-import Promise from "promise";
 import css from "./main.scss";
 import axios from "axios";
 import store from "./store";

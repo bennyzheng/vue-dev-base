@@ -14,8 +14,8 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.16.0",
+    "babel-polyfill": "^6.23.0",
     "mockjs": "^1.0.1-beta3",
-    "promise": "^7.1.1",
     "vue": "^2.2.6",
     "vue-router": "^2.3.1",
     "vuex": "^2.2.1"
