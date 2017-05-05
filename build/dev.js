@@ -1,6 +1,6 @@
 let imagemin = require('./imagemin');
 let spritesmith = require('./spritesmith');
-let webpackDevServer = require('./webpackDevServer');
+let webpackDevServer = require('./webpack.dev.server');
 process.env.NODE_ENV = 'dev';
 
 imagemin()
