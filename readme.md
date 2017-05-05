@@ -15,7 +15,7 @@
     * vue-router - 路由功能
     * axios - 取代vue-resource，用于发送ajax请求
     * mockjs - 拦截ajax请求，自造假数据
-    * promise.js - 支持ES6的Promise
+    * babel-polyfill - 不再使用promise.js，同时也可以在IE上直接使用Promise了
 
 * **工作流涉及技术**
 
@@ -92,7 +92,6 @@
 | |____utils - 功能性代码库
 | | |____interceptors.js - axios请求过滤器
 |____webpack.config.js - webpack脚本
-|____yarn.lock - yarn的锁定文件
 
 ```
 
