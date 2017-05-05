@@ -144,7 +144,7 @@ module.exports = {
             }
         ],
         // 不对某些文件解析依赖
-        "noParse": [/vue\.min\.js$/, /mockjs\/dist\/mock-min\.js$/, /axios\.min\.js$/]
+        "noParse": [/vue\.min\.js$/, /mockjs\/dist\/mock-min\.js$/, /axios\.min\.js$/, /polyfill\.min\.js$/]
     },
     "devtool": "cheap-module-source-map",
     "plugins": plugins
