@@ -6,6 +6,22 @@
 
 测试时是用mac+node.js v7.6，其它环境不清楚，不过没用啥特别的东西，有啥不兼容喊一声，我去摆弄一下
 
+## 安装方法
+
+一般来说直接运行npm install即可，但如果你访问国外网站很慢，可以运行以下命令：
+
+```text
+SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ npm install --registry https://registry.npm.taobao.org
+```
+
+它可以将镜像临时切到淘宝npm镜像中，并且把蛋疼的node-sass的binding.node文件也切到淘宝镜像。
+
+或者你足够懒，可以运行以下命令，效果一样：
+
+```text
+npm run init
+```
+
 ## 相关技术说明
 
 * **前台涉及技术**
