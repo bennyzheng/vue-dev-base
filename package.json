@@ -1,7 +1,7 @@
 {
   "name": "vue-dev-base",
   "version": "1.0.0",
-  "description": "Vue dev base",
+  "description": "Vue自用脚手架",
   "scripts": {
     "dev": "node ./build/dev.js",
     "build": "node ./build/build.js",

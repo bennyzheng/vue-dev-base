@@ -22,6 +22,8 @@ SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ npm install --registr
 npm run install
 ```
 
+若是使用yarn，也同样可以设置SASS_BINARY_SITE来提高速度。
+
 ## 相关技术说明
 
 * **前台涉及技术**
