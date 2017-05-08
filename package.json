@@ -9,7 +9,7 @@
     "sprites": "gulp spritesmith",
     "imagemin": "gulp imagemin",
     "imagecache": "gulp cleanimagecache",
-	"init": "node ./build/fast.install.js"
+	"install": "node ./build/fast.install.js"
   },
   "author": "benny zheng",
   "license": "MIT",

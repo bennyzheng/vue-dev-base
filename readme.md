@@ -8,18 +8,18 @@
 
 ## 安装方法
 
-一般来说直接运行npm install即可，但如果你访问国外网站很慢，可以运行以下命令：
+一般来说直接运行npm install即可，但如果你访问国外网站很慢，可以运行以下命令(仅mac有效，win估计要设置环境变量)：
 
 ```text
-SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ npm install --registry https://registry.npm.taobao.org
+SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ npm install --registry=https://registry.npm.taobao.org
 ```
 
 它可以将镜像临时切到淘宝npm镜像中，并且把蛋疼的node-sass的binding.node文件也切到淘宝镜像。
 
-或者你足够懒，可以运行以下命令，效果一样：
+或者可以运行以下命令，效果一样，并且应该兼容win：
 
 ```text
-npm run init
+npm run install
 ```
 
 ## 相关技术说明
