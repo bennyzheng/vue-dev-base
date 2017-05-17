@@ -10,24 +10,17 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const BabiliWebpackPlugin = require("babili-webpack-plugin"); // 由于webpack.optimize.UglifyJsPlugin不支持es6，用它代替来压缩文件
 const ExtractTextPlugin = require("extract-text-webpack-plugin"); // 将css抽离出来
-const win32 = path.sep == "\\";
-
-const fixPath = path => {
-    path = path.replace(/\\/g, "/");
-    path = path.substr(path.indexOf("/"));
-    return path;
-}
-
-const root = win32 ? fixPath(path.resolve(__dirname)) : path.resolve(__dirname);
+const root = path.resolve(__dirname);
 const entries = {};
 const htmlWebpackPlugins = [];
 const chunks = [];
 const isProduction = process.env.NODE_ENV == "production"; // 是开发环境还是生产环境(请看package.json的script）
 
 glob.sync(`${root}/src/pages/**/main.js`).forEach(file => {
-    file = win32 ? fixPath(file) : file;
-    const array = file.split("/");
-    const index = array.slice(path.dirname(`${root}/src/pages`).split("/").length + 1, array.length - 1).join("/");
+    const rootPosix = root.replace(/\\+/g, "/");
+    const array = file.replace(/^\//, "").split("/");
+    const rootArray = `${rootPosix}/src/pages`.replace(/^\//, "").split("/");
+    const index = array.slice(rootArray.length, array.length - 1).join("/");
     entries[index] = file;
     chunks.push(index);
 
@@ -112,11 +105,11 @@ module.exports = {
     },
     "module": {
         "loaders": [{
-                "test": /\.js$/,
-                "loader": "babel-loader?presets[]=babel-preset-es2015",
-                "include": root,
-                "exclude": /node_modules/
-            },
+            "test": /\.js$/,
+            "loader": "babel-loader?presets[]=babel-preset-es2015",
+            "include": root,
+            "exclude": /node_modules/
+        },
             {
                 "test": /\.vue$/,
                 "loader": "vue-loader",
