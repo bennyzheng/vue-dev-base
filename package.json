@@ -3,13 +3,18 @@
   "version": "1.0.0",
   "description": "Vue自用脚手架",
   "scripts": {
-    "dev": "node ./build/dev.js",
-    "build": "node ./build/build.js",
-    "watch": "node ./build/watch.js",
+    "dev": "npm run sprites && cross-env NODE_ENV=dev node --max_old_space_size=2048 ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "build": "npm run imagecache && npm run imagemin && npm run sprites && cross-env NODE_ENV=production node --max_old_space_size=2048 ./node_modules/webpack/bin/webpack.js --color",
+    "watch": "npm run sprites && cross-env NODE_ENV=watch node --max_old_space_size=2048 ./node_modules/webpack/bin/webpack.js --color -w",
     "sprites": "gulp spritesmith",
     "imagemin": "gulp imagemin",
     "imagecache": "gulp cleanimagecache",
-	"setup": "node ./build/fast.install.js"
+    "d": "npm run dev",
+    "b": "npm run build",
+    "w": "npm run watch",
+    "s": "npm run sprites",
+    "m": "npm run imagemin",
+    "c": "npm run imagecache"
   },
   "author": "benny zheng",
   "license": "MIT",
@@ -44,6 +49,7 @@
     "vue-loader": "^11.3.4",
     "vue-template-compiler": "^2.2.6",
     "webpack": "^2.3.2",
-    "webpack-dev-server": "^2.4.2"
+    "webpack-dev-server": "^2.4.2",
+    "cross-env": "^5.0.0"
   }
 }

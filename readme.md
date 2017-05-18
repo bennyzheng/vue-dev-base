@@ -16,12 +16,6 @@ SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ npm install --registr
 
 它可以将镜像临时切到淘宝npm镜像中，并且把蛋疼的node-sass的binding.node文件也切到淘宝镜像。
 
-或者可以运行以下命令，效果一样，并且应该兼容win：
-
-```text
-npm run setup 
-```
-
 若是使用yarn，也同样可以设置SASS_BINARY_SITE来提高速度。
 
 ## 相关技术说明
@@ -47,6 +41,7 @@ npm run setup
     * postcss - 自动添加css浏览器前缀
     * gulp - 处理雪碧图、图片压缩等事务
     * webpack - 处理代码文件监听、打包压缩、HTML自动生成、CSS文件自动抽离
+    * cross-env - 处理设置环境变量在不同平台上的差异
 
 ## 目录结构
 
@@ -117,7 +112,7 @@ npm run setup
 
 ### 启动开发模式
 
-命令：npm run dev
+命令：npm run dev | npm run d
 
 * 将/src/images中的图片压缩输出到/htdocs/images
 * 构建雪碧图
@@ -130,7 +125,7 @@ npm run setup
 
 ### 启动watch开发模式
 
-命令：num run watch
+命令：num run watch | npm run w
 
 与npm run dev类似，只是不启用webpack-dev-server，也不自动打开浏览器了。
 
@@ -138,7 +133,7 @@ npm run setup
 
 ### 启动发布
 
-命令：npm run build
+命令：npm run build | npm run b
 
 执行build构建项目
 
@@ -151,13 +146,13 @@ npm run setup
 
 ### 图片压缩
 
-命令：npm run imagemin
+命令：npm run imagemin | npm run m
 
 将/src/images中所有图片压缩输出到/htdocs/images中。
 
 ### 清除压缩图片缓存
 
-命令: npm run imagecache
+命令: npm run imagecache | npm run c
 
 将图片压缩时生成的缓存文件删除，下次运行图片压缩命令时将全部重新生成，否则会只生成已经修改过的文件
 
