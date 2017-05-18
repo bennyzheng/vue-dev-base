@@ -19,7 +19,7 @@ SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ npm install --registr
 或者可以运行以下命令，效果一样，并且应该兼容win：
 
 ```text
-npm run install
+npm run setup 
 ```
 
 若是使用yarn，也同样可以设置SASS_BINARY_SITE来提高速度。
