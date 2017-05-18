@@ -49,7 +49,8 @@ const plugins = [
         __DEBUG__: !isProduction
     }),
     new ExtractTextPlugin({ // 抽离出css
-        filename: `css/[name].css${isProduction ? '?v=[contenthash]' : ''}`
+        filename: `css/[name].css${isProduction ? '?v=[contenthash]' : ''}`,
+        allChunks: true
     }),
     new webpack.optimize.CommonsChunkPlugin({ // 将通用css抽出来
         name: "common", // 公共模块的名称
